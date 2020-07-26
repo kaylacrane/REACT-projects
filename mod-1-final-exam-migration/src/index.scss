@@ -1,0 +1,31 @@
+@import './stylesheets/_Variables.scss';
+@import './stylesheets/_Mixins.scss';
+@import './stylesheets/_Functions.scss';
+@import './stylesheets/_Buttons.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+html {
+  font-family: $font-main;
+  font-size: $default-font-size;
+}
+
+.wrapper {
+  padding: 30px 15px 45px;
+  max-width: $desktop;
+  margin: auto;
+
+  @include tablet {
+    padding: 30px 39px 45px;
+  }
+  @include desktop {
+    padding: 60px 275px;
+  }
+}

@@ -1,0 +1,71 @@
+@import './_Reset.scss';
+@import './_Variables.scss';
+@import './_Mixins.scss';
+@import './_Functions.scss';
+@import './_Buttons.scss';
+
+.main__reasons {
+  background-color: $color-light2;
+  text-align: center;
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 60px;
+    @include tablet {
+      grid-column-gap: 25px;
+    }
+    @include desktop {
+      padding-left: 85px;
+      padding-right: 85px;
+    }
+  }
+
+  &--title {
+    grid-column: span 3;
+    font-size: rem(24);
+    font-family: $font-titles;
+    text-transform: capitalize;
+    margin-bottom: 45px;
+    @include tablet {
+      font-size: rem(26);
+    }
+    @include desktop {
+      font-size: rem(32);
+    }
+  }
+  &--block {
+    grid-column: span 3;
+    padding: 0 55px 0px;
+    line-height: 1.6;
+
+    @include tablet {
+      grid-column: span 1;
+      padding: 0;
+    }
+    &Title {
+      font-family: $font-titles;
+      font-size: rem(18);
+      @include tablet {
+        font-size: rem(24);
+        margin-bottom: 14px;
+      }
+    }
+    &Text {
+      font-size: rem(18);
+      margin-bottom: 15px;
+
+      @include tablet {
+        font-size: rem(20);
+      }
+    }
+  }
+  .button {
+    margin: 0 auto 20px;
+    grid-column: span 3;
+    @include tablet {
+      grid-column: span 3;
+      margin: 60px auto 0;
+    }
+  }
+}

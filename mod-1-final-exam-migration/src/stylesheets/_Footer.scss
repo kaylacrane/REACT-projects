@@ -1,0 +1,80 @@
+@import './_Reset.scss';
+@import './_Variables.scss';
+@import './_Mixins.scss';
+
+.footer {
+  width: 100%;
+  background-color: $color-dark;
+  position: relative;
+
+  .button {
+    display: none;
+    @include tablet {
+      display: inline-block;
+    }
+  }
+
+  .button-contents {
+    position: relative;
+    transform: translateY(10%);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px;
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      align-items: flex-start;
+      padding-top: 45px;
+    }
+    @include desktop {
+      justify-content: center;
+    }
+  }
+
+  &__menu--sections,
+  &__menu--socialMedia {
+    padding: 0 15px 30px;
+    font-weight: $font-weight-lt;
+    @include desktop {
+      margin: 0 20px;
+    }
+    a {
+      display: inline-block;
+      color: $color-white;
+      font-size: rem(16);
+      text-transform: uppercase;
+      padding: 6px;
+      &:hover {
+        text-shadow: 0 5px 10px $color-white;
+      }
+    }
+  }
+
+  &__copyBlock {
+    order: -1;
+    padding-bottom: 15px;
+    @include tablet {
+      order: 0;
+    }
+    @include desktop {
+      margin: 0 20px;
+    }
+    &--copyText {
+      display: block;
+      color: $color-white;
+      font-size: rem(14);
+      padding: 10px;
+
+      .heart {
+        color: $color-contrast;
+        padding: 0 1px;
+      }
+    }
+  }
+}
