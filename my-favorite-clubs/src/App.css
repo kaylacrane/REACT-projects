@@ -1,0 +1,49 @@
+.clubsList {
+  min-height: 100vh;
+  min-width: fit-content;
+  background-color: lightseagreen;
+  padding-top: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.clubCard {
+  background-color: white;
+  border-radius: 10px;
+  min-width: fit-content;
+  max-width: 80vw;
+  min-height: fit-content;
+  display: flex;
+  margin: 15px auto;
+}
+.clubIcon {
+  color: rebeccapurple;
+  font-size: 120px;
+  padding: 15px 30px;
+  align-self: center;
+  width: 160px;
+  text-align: center;
+}
+.clubDescription {
+  display: flex;
+  flex-direction: column;
+}
+.clubName {
+  font-size: 40px;
+  margin: 15px 0;
+}
+.members {
+  color: grey;
+  margin: 0;
+  padding-bottom: 5px;
+}
+.memberList {
+  margin-top: 0;
+  list-style: none;
+  padding: 0;
+  max-height: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  column-fill: auto;
+}
