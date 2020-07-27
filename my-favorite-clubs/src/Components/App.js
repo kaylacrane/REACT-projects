@@ -1,7 +1,7 @@
 import React from 'react';
 import '../stylesheets/App.css';
 import ClubList from './ClubList';
-
+// we place our club data in the abuela component App and pass it down through props
 const clubs = [
   {
     name: 'Book club',
@@ -117,6 +117,7 @@ const clubs = [
 
 class App extends React.Component {
   render() {
+    // below is how we pass the clubs array down to a child component
     return <ClubList clubs={clubs} />;
   }
 }
