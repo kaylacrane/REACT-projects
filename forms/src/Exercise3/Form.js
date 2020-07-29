@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import RadioButtons from './RadioButtons';
+import CheckBoxes from './CheckBoxes';
 
 class Form extends Component {
   constructor(props) {
@@ -33,104 +35,25 @@ class Form extends Component {
               value={this.props.formInfo.job}
             />
           </label>
-          <input
-            type="radio"
-            name="edad"
-            id="edad"
-            value="A"
-            onChange={this.handleFormChild}
-            checked={this.props.edad === this.props.id ? true : false}
+          <RadioButtons
+            handleForm={this.props.handleForm}
+            formInfo={this.props.formInfo}
           />
-          All ages
-          <input
-            type="radio"
-            name="edad"
-            id="edad"
-            value="7"
-            onChange={this.handleFormChild}
-            checked={this.props.edad === this.props.id ? true : false}
+          <CheckBoxes
+            handleForm={this.props.handleForm}
+            formInfo={this.props.formInfo}
           />
-          7
-          <input
-            type="radio"
-            name="edad"
-            id="edad"
-            value="12"
-            onChange={this.handleFormChild}
-            checked={this.props.edad === this.props.id ? true : false}
-          />
-          12
-          <input
-            type="radio"
-            name="edad"
-            id="edad"
-            value="16"
-            onChange={this.handleFormChild}
-            checked={this.props.edad === this.props.id ? true : false}
-          />
-          16
-          <input
-            type="radio"
-            name="edad"
-            id="edad"
-            value="18"
-            onChange={this.handleFormChild}
-            checked={this.props.edad === this.props.id ? true : false}
-          />
-          18
-          <input
-            type="checkbox"
-            name="genre"
-            value="drama"
-            onChange={this.handleFormChild}
-          />
-          drama
-          <input
-            type="checkbox"
-            name="genre"
-            value="comedia"
-            onChange={this.handleFormChild}
-          />
-          comedia
-          <input
-            type="checkbox"
-            name="genre"
-            value="fantasía"
-            onChange={this.handleFormChild}
-          />
-          fantasía
-          <input
-            type="checkbox"
-            name="genre"
-            value="acción"
-            onChange={this.handleFormChild}
-          />
-          acción
-          <input
-            type="checkbox"
-            name="genre"
-            value="familia"
-            onChange={this.handleFormChild}
-          />
-          familia
-          <input
-            type="checkbox"
-            name="genre"
-            value="terror"
-            onChange={this.handleFormChild}
-          />
-          terror
+
+          <div className="card">
+            <span>Name:</span>
+            <div className="name">{this.props.formInfo.email}</div>
+            <span>Job:</span>
+            <div className="description">{this.props.formInfo.job}</div>
+
+            <span>Age:</span>
+            <div className="age">{this.props.formInfo.edad}</div>
+          </div>
         </form>
-
-        <div className="card">
-          <span>Name:</span>
-          <div className="name">{this.props.formInfo.email}</div>
-          <span>Job:</span>
-          <div className="description">{this.props.formInfo.job}</div>
-
-          <span>Age:</span>
-          <div className="age">{this.props.formInfo.edad}</div>
-        </div>
       </div>
     );
   }

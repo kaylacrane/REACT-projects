@@ -19,13 +19,15 @@ class App extends React.Component {
     console.log(stateAttribute);
     const value = ev.currentTarget.value;
     console.log(value);
-    this.setState({ [stateAttribute]: value });
-
-    // if (ev.currentTarget.id === 'email') {
-    //   this.setState({ email: ev.currentTarget.value });
-    // } else if (ev.currentTarget.id === 'job') {
-    //   this.setState({ job: ev.currentTarget.value });
-    // }
+    if (stateAttribute === 'genre') {
+      if (this.state.genre === value) {
+        this.setState({ genre: '' });
+      } else {
+        this.setState({ genre: value });
+      }
+    } else {
+      this.setState({ [stateAttribute]: value });
+    }
   }
 
   render() {
