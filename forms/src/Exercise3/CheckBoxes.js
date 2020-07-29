@@ -8,10 +8,11 @@ class CheckBoxes extends Component {
 
   handleFormChild(ev) {
     this.props.handleForm(ev);
+    console.log(this.props.formInfo.genre);
+    this.forceUpdate();
   }
 
   render() {
-    console.log(this.props.formInfo);
     return (
       <fieldset>
         <legend>Genre</legend>
@@ -21,7 +22,7 @@ class CheckBoxes extends Component {
           value="drama"
           id="genre"
           onChange={this.handleFormChild}
-          checked={this.props.formInfo.genre === 'drama' ? true : false}
+          checked={this.props.formInfo.genre.includes('drama') ? true : false}
         />
         drama
         <input
@@ -30,7 +31,7 @@ class CheckBoxes extends Component {
           value="comedia"
           id="genre"
           onChange={this.handleFormChild}
-          checked={this.props.formInfo.genre === 'comedia' ? true : false}
+          checked={this.props.formInfo.genre.includes('comedia') ? true : false}
         />
         comedia
         <input
@@ -39,7 +40,9 @@ class CheckBoxes extends Component {
           value="fantasía"
           id="genre"
           onChange={this.handleFormChild}
-          checked={this.props.formInfo.genre === 'fantasía' ? true : false}
+          checked={
+            this.props.formInfo.genre.includes('fantasía') ? true : false
+          }
         />
         fantasía
         <input
@@ -48,7 +51,7 @@ class CheckBoxes extends Component {
           value="acción"
           id="genre"
           onChange={this.handleFormChild}
-          checked={this.props.formInfo.genre === 'acción' ? true : false}
+          checked={this.props.formInfo.genre.includes('acción') ? true : false}
         />
         acción
         <input
@@ -57,7 +60,7 @@ class CheckBoxes extends Component {
           value="familia"
           id="genre"
           onChange={this.handleFormChild}
-          checked={this.props.formInfo.genre === 'familia' ? true : false}
+          checked={this.props.formInfo.genre.includes('familia') ? true : false}
         />
         familia
         <input
@@ -66,7 +69,7 @@ class CheckBoxes extends Component {
           value="terror"
           id="genre"
           onChange={this.handleFormChild}
-          checked={this.props.formInfo.genre === 'terror' ? true : false}
+          checked={this.props.formInfo.genre.includes('terror') ? true : false}
         />
         terror
       </fieldset>

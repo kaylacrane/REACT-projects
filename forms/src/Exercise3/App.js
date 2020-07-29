@@ -9,21 +9,27 @@ class App extends React.Component {
       email: '',
       job: '',
       edad: '',
-      genre: '',
+      genre: [],
     };
     this.handleForm = this.handleForm.bind(this);
   }
   handleForm(ev) {
-    /*a more dynamic way of doing the if statements below*/
     const stateAttribute = ev.currentTarget.id;
-    console.log(stateAttribute);
+
     const value = ev.currentTarget.value;
-    console.log(value);
-    if (stateAttribute === 'genre') {
-      if (this.state.genre === value) {
-        this.setState({ genre: '' });
+
+    /* controlling checkboxes*/
+    if (stateAttribute === 'genre' && this.state.genre.includes(value)) {
+      /* if genre is already in list remove it*/
+      const genreList = this.state.genre;
+      const index = genreList.findIndex(value);
+      genreList.splice(index, 1);
+      console.log(value);
+    } else if (stateAttribute === 'genre' && !genreList.includes(value)) {
+      if (genreList.length < 3) {
+        genreList.push(value);
       } else {
-        this.setState({ genre: value });
+        alert('only three please');
       }
     } else {
       this.setState({ [stateAttribute]: value });

@@ -52,6 +52,8 @@ class Form extends Component {
 
             <span>Age:</span>
             <div className="age">{this.props.formInfo.edad}</div>
+            <span>Genre:</span>
+            <div className="genre">{this.props.formInfo.genre}</div>
           </div>
         </form>
       </div>
