@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './collapsibles-practice/App';
+import App from './Exercise1/App';
 
 ReactDOM.render(
   <React.StrictMode>

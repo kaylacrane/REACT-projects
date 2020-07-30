@@ -4,5 +4,7 @@ In this repository I have included several exercises and other projects that I h
 
 Kayla Crane
 github: [@kaylacrane](https://github.com/kaylacrane)
+
 email: <kayla.crane@gmail.com>
+
 twitter: [@KaylaJCrane](https://twitter.com/KaylaJCrane)
