@@ -9,17 +9,18 @@ class App extends Component {
     super(props);
     this.handleCities = this.handleCities.bind(this);
     this.handleGender = this.handleGender.bind(this);
+    this.setGenders = this.setGenders.bind(this);
     this.state = {
       profiles: [],
       selectedLocations: [],
-      selectedGenders: [],
+      selectedGenders: ['male', 'female'],
     };
   }
   componentDidMount() {
     fetchProfiles().then((data) => {
       this.setState({
         profiles: data.results,
-        selectedLocations: data.results.map((person) => person.location.city),
+        selectedLocations: [],
         selectedGenders: [],
       });
     });
@@ -28,22 +29,13 @@ class App extends Component {
     const selectedCity = ev.currentTarget.value;
     const stateLocations = this.state.selectedLocations;
     /* if checked city is not in selectedLocations(saved filters), then we add it*/
-    if (!this.state.selectedLocations) {
-      const allCities = this.state.profiles.map(
-        (profile) => profile.location.city
-      );
-      this.setState({ selectedLocations: allCities });
-    } else if (this.state.selectedLocations.length === 10) {
-      const newLocationsArray = stateLocations.filter(
-        (city) => city === selectedCity
-      );
-      this.setState({ selectedLocations: newLocationsArray });
-    } else if (!this.state.selectedLocations.includes(selectedCity)) {
+    if (!this.state.selectedLocations.includes(selectedCity)) {
       /* if selected city isn't in state, add it*/
       stateLocations.push(selectedCity);
       this.setState({
         selectedLocations: stateLocations,
       });
+      console.log(this.state.selectedLocations);
     } else if (this.state.selectedLocations.includes(selectedCity)) {
       /*if checked city is already in selectedLocations, we filter out all other cities into a new array and reassign state to that new array value*/
       const newLocationsArray = stateLocations.filter(
@@ -51,60 +43,65 @@ class App extends Component {
       );
       this.setState({ selectedLocations: newLocationsArray });
     }
-    console.log('this.state=', this.state);
   }
   handleGender(ev) {
-    const clickedGender = ev.currentTarget.value;
-    console.log('this.state=', this.state);
     const stateGenders = this.state.selectedGenders;
-    if (
-      (this.state.selectedGenders.length === 0) |
-      !this.state.selectedGenders.includes(clickedGender)
-    ) {
-      /* if checked gender is not in selectedGenders (saved filters), then we add it*/
+    const clickedGender = ev.currentTarget.value;
+    if (!stateGenders.includes(clickedGender)) {
       stateGenders.push(clickedGender);
-      this.setState({
-        selectedGenders: stateGenders,
-      });
-      console.log('stateGenders', stateGenders);
-    } else if (
-      this.state.selectedGenders.includes(clickedGender) &&
-      this.state.selectedGenders.length === 2
-    ) {
+      this.setState({ selectedGenders: stateGenders });
+    } else if (stateGenders.includes(clickedGender)) {
       const newGenders = stateGenders.filter(
-        (gender) => gender === clickedGender
+        (gender) => gender !== clickedGender
       );
-      console.log('newGender', newGenders);
       this.setState({ selectedGenders: newGenders });
-    } else if (
-      this.state.selectedGenders.includes(clickedGender) &&
-      this.state.selectedGenders.length !== 2
-    ) {
     }
   }
+  setGenders() {
+    if (this.state.selectedGenders.length === 0) {
+      return ['male', 'female'];
+    } else {
+      return this.state.selectedGenders;
+    }
+  }
+  setCities() {
+    if (this.state.selectedLocations.length === 0) {
+      return this.state.profiles.map((profile) => profile.location.city);
+    } else {
+      return this.state.selectedLocations;
+    }
+  }
+
   render() {
     const cityFilters = this.state.selectedLocations;
     const genderFilters = this.state.selectedGenders;
     const stateProfiles = this.state.profiles;
-
+    const arrayGenders = Array.from(
+      new Set(this.state.profiles.map((profile) => profile.gender))
+    );
     const filteredProfiles = stateProfiles
       .filter((profile) => cityFilters.includes(profile.location.city))
       .filter((profile) => genderFilters.includes(profile.gender));
     const arrayCities = this.state.profiles.map(
       (profile) => profile.location.city
     );
-    const arrayGenders = Array.from(
-      new Set(this.state.profiles.map((profile) => profile.gender))
-    );
 
     return (
       <div>
-        <Filters filters={arrayGenders} onCheckHandler={this.handleGender} />
+        <Filters
+          allFilters={arrayGenders}
+          selectedFilters={genderFilters}
+          onCheckHandler={this.handleGender}
+        />
 
-        <Filters filters={arrayCities} onCheckHandler={this.handleCities} />
+        <Filters
+          allFilters={arrayCities}
+          selectedFilters={cityFilters}
+          onCheckHandler={this.handleCities}
+        />
         <ProfileCard
           profileInfo={
-            cityFilters.length === 10 && genderFilters.length === 0
+            cityFilters.length === 0 && genderFilters.length === 0
               ? stateProfiles
               : filteredProfiles
           }

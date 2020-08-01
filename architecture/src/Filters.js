@@ -10,7 +10,7 @@ class Filters extends Component {
   }
   /* add isClicked!!!*/
   render() {
-    const filters = this.props.filters;
+    const filters = this.props.allFilters;
     const filtersHtml = filters.map((filter, i) => {
       return (
         <li key={i}>
@@ -18,6 +18,7 @@ class Filters extends Component {
             type="checkbox"
             value={filter}
             onChange={this.onCheckHandlerChild}
+            checked={this.props.selectedFilters.includes(filter)}
           />
           {filter}
         </li>
