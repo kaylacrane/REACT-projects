@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Show from './Show';
-import dogImg from '../images/go-doggie.JPG';
 
 class ShowList extends Component {
   render() {
@@ -13,7 +12,7 @@ class ShowList extends Component {
             <Show
               key={show.show.id}
               id={show.show.id}
-              image={dogImg}
+              image={show.show.image}
               name={show.show.name}
               score={show.score}
               status={show.show.status}

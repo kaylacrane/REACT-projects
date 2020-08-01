@@ -26,6 +26,7 @@ class Search extends Component {
             checked={this.props.isRunningOnly === true ? true : false}
             onChange={this.isRunningHandlerChild}
           />
+          Show only currently running shows
         </label>
       </form>
     );
