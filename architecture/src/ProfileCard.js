@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class ProfileCard extends Component {
   render() {
-    const profiles = this.props.profileInfo;
+    const profiles = this.props.profiles;
     const oneProfile = profiles.map((profile, i) => {
       const { picture, name, location, email, dob } = profile;
       return (
@@ -15,7 +15,7 @@ class ProfileCard extends Component {
         </div>
       );
     });
-    return <>{oneProfile} </>;
+    return <div className="profiles-list">{oneProfile} </div>;
   }
 }
 

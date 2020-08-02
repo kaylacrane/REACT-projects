@@ -3,4 +3,9 @@
 }
 .profile-card {
   border: 1px solid grey;
+  width: fit-content;
+}
+.profiles-list {
+  display: flex;
+  flex-wrap: wrap;
 }

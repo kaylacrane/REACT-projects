@@ -99,12 +99,6 @@ class App extends Component {
       <div>
         <form>
           <input
-            type="text"
-            id="search"
-            placeholder="Family Guy"
-            onChange={(event) => this.onChangeHandler(event, 'searchText')}
-          />
-          <input
             type="checkbox"
             id="running-filter"
             checked={this.state.isRunningOnly === true ? true : false}
