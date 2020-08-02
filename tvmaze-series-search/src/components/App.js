@@ -2,13 +2,14 @@ import React from 'react';
 import '../stylesheets/App.css';
 import fetchShows from '../services/FetchShows';
 import ShowList from './ShowList';
-import jsonShows from '../services/shows.json';
+// import jsonShows from '../services/shows.json';
 import Search from './Search';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.searchHandler = this.searchHandler.bind(this);
+    this.isRunningHandler = this.isRunningHandler.bind(this);
     this.state = {
       searchText: '',
       shows: [],
@@ -25,7 +26,9 @@ class App extends React.Component {
     const searchInput = ev.currentTarget.value.toLowerCase();
     this.setState({ searchText: searchInput });
   }
-
+  isRunningHandler(ev) {
+    this.setState({ isRunningOnly: ev.currentTarget.checked });
+  }
   render() {
     console.log(this.state.shows);
     const searchText = this.state.searchText;
@@ -42,6 +45,7 @@ class App extends React.Component {
           searchHandler={this.searchHandler}
           searchValue={this.state.searchText}
           isRunningOnly={this.state.isRunningOnly}
+          isRunningHandler={this.isRunningHandler}
         />
         <ShowList shows={searchText === '' ? showsList : filteredShows} />
       </div>

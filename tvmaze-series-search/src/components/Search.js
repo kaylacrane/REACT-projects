@@ -4,9 +4,13 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.searchHandlerChild = this.searchHandlerChild.bind(this);
+    this.isRunningHandlerChild = this.isRunningHandlerChild.bind(this);
   }
   searchHandlerChild(ev) {
     this.props.searchHandler(ev);
+  }
+  isRunningHandlerChild(ev) {
+    this.props.isRunningHandler(ev);
   }
   render() {
     console.log(this.props);
