@@ -35,19 +35,30 @@ class App extends React.Component {
     console.log('searchText', searchText);
     const showsList = this.state.shows;
     console.log(showsList);
-    const filteredShows = showsList.filter((show) =>
-      show.show.name.toLowerCase().includes(searchText)
-    );
+    const filteredShows = showsList
+      .filter((show) =>
+        this.state.searchText
+          ? show.show.name.toLowerCase().includes(searchText)
+          : true
+      )
+      .filter((show) =>
+        this.state.isRunningOnly === true
+          ? show.show.status === 'Running'
+          : true
+      );
     console.log('filteredShows', filteredShows);
     return (
       <div>
+        <div className="results">{`${
+          filteredShows ? filteredShows.length : showsList.length
+        } shows found`}</div>
         <Search
           searchHandler={this.searchHandler}
           searchValue={this.state.searchText}
           isRunningOnly={this.state.isRunningOnly}
           isRunningHandler={this.isRunningHandler}
         />
-        <ShowList shows={searchText === '' ? showsList : filteredShows} />
+        <ShowList shows={!filteredShows ? showsList : filteredShows} />
       </div>
     );
   }
