@@ -3,7 +3,6 @@ import Show from './Show';
 
 class ShowList extends Component {
   render() {
-    console.log(this.props);
     const { shows } = this.props;
     return (
       <ul className="show-list">

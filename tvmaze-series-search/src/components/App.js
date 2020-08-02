@@ -18,7 +18,6 @@ class App extends React.Component {
   }
   componentDidMount() {
     fetchShows().then((data) => {
-      console.log(data);
       this.setState({ shows: data });
     });
   }
@@ -30,11 +29,9 @@ class App extends React.Component {
     this.setState({ isRunningOnly: ev.currentTarget.checked });
   }
   render() {
-    console.log(this.state.shows);
     const searchText = this.state.searchText;
-    console.log('searchText', searchText);
     const showsList = this.state.shows;
-    console.log(showsList);
+
     const filteredShows = showsList
       .filter((show) =>
         this.state.searchText
@@ -46,7 +43,6 @@ class App extends React.Component {
           ? show.show.status === 'Running'
           : true
       );
-    console.log('filteredShows', filteredShows);
     return (
       <div>
         <div className="results">{`${

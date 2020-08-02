@@ -4,15 +4,8 @@ const defaultImg = 'https://dummyimage.com/215x300/000/fff.png&text=';
 class Show extends Component {
   constructor(props) {
     super(props);
-    // this.isEmpty = this.isEmpty.bind(this);
   }
-  //   isEmpty(variable) {
-  //     if (variable === null) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }
+
   render() {
     const { id, image, name, score, status } = this.props;
     return (

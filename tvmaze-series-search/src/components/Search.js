@@ -13,7 +13,6 @@ class Search extends Component {
     this.props.isRunningHandler(ev);
   }
   render() {
-    console.log(this.props);
     return (
       <form>
         <label htmlFor="search">Search for a show</label>
