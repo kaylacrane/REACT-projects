@@ -37,8 +37,14 @@ class App extends Component {
     }
   }
   render() {
-    console.log(this.state);
-    const cities = this.state.profiles.map((profile) => profile.location.city);
+    const cities = this.state.profiles
+      .map((profile) => profile.location.city)
+      .reduce(
+        (unique, city) => (unique.includes(city) ? unique : [...unique, city]),
+        []
+      )
+      .sort((a, b) => a.localeCompare(b));
+    console.log(cities);
     const filteredUsers = this.state.profiles
       .filter((user) => {
         return this.state.genderFilter !== 'All'
@@ -46,7 +52,6 @@ class App extends Component {
           : true;
       })
       .filter((user) => {
-        console.log(this.state.cityFilter.length);
         if (this.state.cityFilter.length !== 0) {
           return this.state.cityFilter.includes(user.location.city);
         } else {
