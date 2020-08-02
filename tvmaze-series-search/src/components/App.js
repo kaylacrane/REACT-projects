@@ -11,16 +11,16 @@ class App extends React.Component {
     this.searchHandler = this.searchHandler.bind(this);
     this.state = {
       searchText: '',
-      shows: jsonShows,
+      shows: [],
       isRunningOnly: false,
     };
   }
-  // componentDidMount() {
-  //   fetchShows().then((data) => {
-  //     console.log(data);
-  //     this.setState({ shows: data });
-  //   });
-  // }
+  componentDidMount() {
+    fetchShows().then((data) => {
+      console.log(data);
+      this.setState({ shows: data });
+    });
+  }
   searchHandler(ev) {
     const searchInput = ev.currentTarget.value.toLowerCase();
     this.setState({ searchText: searchInput });
