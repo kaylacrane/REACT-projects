@@ -44,7 +44,6 @@ class App extends Component {
         []
       )
       .sort((a, b) => a.localeCompare(b));
-    console.log(cities);
     const filteredUsers = this.state.profiles
       .filter((user) => {
         return this.state.genderFilter !== 'All'
@@ -59,7 +58,7 @@ class App extends Component {
         }
       });
     return (
-      <div>
+      <div className="app">
         <Filters handleFilters={this.handleFilters} cities={cities} />
         <ProfileCard profiles={filteredUsers} />
       </div>

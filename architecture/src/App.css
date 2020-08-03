@@ -1,11 +1,72 @@
+.app {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 5px 0;
+}
+.gender-filter {
+  padding: 10px 5px;
+}
 .filters-list {
   border: 1px solid grey;
 }
 .profile-card {
+  box-sizing: border-box;
   border: 1px solid grey;
-  width: fit-content;
+  width: 180px;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 10px;
+  border: purple 5px double;
+  margin: 5px;
+  border-radius: 15px;
+  background-color: plum;
 }
 .profiles-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px;
+}
+.photo {
+  border-radius: 50%;
+  height: 40%;
+  transition: 0.8s all;
+}
+.photo:hover {
+  transform: scaleX(-1);
+}
+.name {
+  margin: 10px 0;
+  font-size: 16px;
+  transition: all 0.5s;
+}
+.name:hover {
+  color: blue;
+}
+.details {
+  font-size: 10px;
+}
+
+.city-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 100px;
+  flex-wrap: wrap;
+  margin: auto;
+  border: 1px dotted grey;
+  padding: 15px 0;
+  background-color: lightgray;
+}
+.city-checkbox {
+  font-size: 14px;
+}
+.city-title {
+  padding: 5px;
+  margin: 0;
+  border: 1px dotted grey;
+  background-color: lightgray;
 }

@@ -7,11 +7,15 @@ class ProfileCard extends Component {
       const { picture, name, location, email, dob } = profile;
       return (
         <div className="profile-card" key={i}>
-          <img src={picture.large} alt="profile" />
+          <img src={picture.large} alt="profile" className="photo" />
           <h2 className="name">{`${name.first} ${name.last}`}</h2>
-          <p>{`${location.city}, ${location.state} - ${location.country}`}</p>
-          <p>{email}</p>
-          <p>{`${dob.age} years old`}</p>
+          <div className="details">
+            <p className="city">{`${location.city}, ${location.state} - ${location.country}`}</p>
+            <a href={`mailto: ${email}`} className="email">
+              email
+            </a>
+            <p className="age">{`${dob.age} years old`}</p>
+          </div>
         </div>
       );
     });

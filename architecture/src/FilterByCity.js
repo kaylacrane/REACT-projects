@@ -16,7 +16,7 @@ class FilterByCity extends Component {
   render() {
     const citiesHtml = this.props.cities.map((city, index) => {
       return (
-        <label key={index} className="display-block">
+        <label key={index} className="city-checkbox">
           <input
             type="checkbox"
             name="location"
@@ -29,8 +29,8 @@ class FilterByCity extends Component {
     });
     return (
       <div>
-        <p>Cities:</p>
-        {citiesHtml}
+        <p className="city-title">Cities:</p>
+        <div className="city-list">{citiesHtml}</div>
       </div>
     );
   }

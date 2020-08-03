@@ -14,7 +14,7 @@ class FilterByGender extends Component {
 
   render() {
     return (
-      <>
+      <div className="gender-filter">
         <label className="form__label display-block" htmlFor="gender">
           Gender:
         </label>
@@ -29,7 +29,7 @@ class FilterByGender extends Component {
           <option value="female">Female</option>
           <option value="male">Male</option>
         </select>
-      </>
+      </div>
     );
   }
 }
