@@ -14,6 +14,7 @@ class Show extends Component {
           src={image ? image.medium : defaultImg + name}
           className="show-image"
           alt="show cover"
+          height="150px"
         />
         <h2 className="show-title">{name}</h2>
         <span className="show-score">{score}</span>

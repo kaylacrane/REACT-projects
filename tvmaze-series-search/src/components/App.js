@@ -10,24 +10,51 @@ class App extends React.Component {
     super(props);
     this.searchHandler = this.searchHandler.bind(this);
     this.isRunningHandler = this.isRunningHandler.bind(this);
+    this.copyHandler = this.copyHandler.bind(this);
+    this.updateClipboard = this.updateClipboard.bind(this);
     this.state = {
-      searchText: '',
+      searchText: 'girls',
       shows: [],
       isRunningOnly: false,
     };
   }
   componentDidMount() {
-    fetchShows().then((data) => {
+    fetchShows(this.state.searchText).then((data) => {
       this.setState({ shows: data });
     });
+  }
+  updateClipboard(newClip) {
+    navigator.clipboard.writeText(newClip).then(
+      function () {
+        alert('Text copied to clipboard');
+        // window.confirm("Text copied to clipboard");
+      },
+      function () {
+        /* clipboard write failed */
+      }
+    );
+  }
+  copyHandler(ev) {
+    const text = ev.currentTarget.innerHTML;
+    this.updateClipboard(text);
   }
   searchHandler(ev) {
     const searchInput = ev.currentTarget.value.toLowerCase();
     this.setState({ searchText: searchInput });
+    if (searchInput === '') {
+      this.setState({ shows: [] });
+    } else {
+      fetchShows(searchInput).then((data) => {
+        this.setState({ shows: data });
+      });
+    }
   }
   isRunningHandler(ev) {
     this.setState({ isRunningOnly: ev.currentTarget.checked });
   }
+  // renderNoSearch)({
+  //   if
+  // })
   render() {
     const searchText = this.state.searchText;
     const showsList = this.state.shows;
@@ -55,6 +82,9 @@ class App extends React.Component {
           isRunningHandler={this.isRunningHandler}
         />
         <ShowList shows={!filteredShows ? showsList : filteredShows} />
+        <div>
+          <p onClick={this.copyHandler}>Click to copy this text</p>
+        </div>
       </div>
     );
   }

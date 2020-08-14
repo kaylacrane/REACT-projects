@@ -5,12 +5,18 @@ class Search extends Component {
     super(props);
     this.searchHandlerChild = this.searchHandlerChild.bind(this);
     this.isRunningHandlerChild = this.isRunningHandlerChild.bind(this);
+    this.enterHandler = this.enterHandler.bind(this);
   }
   searchHandlerChild(ev) {
     this.props.searchHandler(ev);
   }
   isRunningHandlerChild(ev) {
     this.props.isRunningHandler(ev);
+  }
+  enterHandler(ev) {
+    if (ev.keyCode === 13) {
+      ev.preventDefault();
+    }
   }
   render() {
     return (
@@ -21,6 +27,8 @@ class Search extends Component {
           id="search"
           placeholder="Family Guy"
           onChange={this.searchHandlerChild}
+          value={this.props.searchValue}
+          onKeyDown={this.enterHandler}
         />
         <label htmlFor="running-filter">
           <input

@@ -1,5 +1,5 @@
-export default () => {
-  return fetch('http://api.tvmaze.com/search/shows?q=girls')
-    .then((response) => response.json())
-    .then((shows) => shows);
+export default (query) => {
+  return fetch(
+    `http://api.tvmaze.com/search/shows?q=${query}`
+  ).then((response) => response.json());
 };
